@@ -1,0 +1,59 @@
+[
+  {
+    "surname": "Sidorov",
+    "amount": 2000,
+    "product_name": "Product 3",
+    "client_company": "Firma 3",
+    "customer_surname": "Ivanov"
+  },
+  {
+    "surname": "Ivanova",
+    "amount": 1200,
+    "product_name": "Product 4",
+    "client_company": "Firma 4",
+    "customer_surname": "Petrova"
+  },
+  {
+    "surname": "Petrova",
+    "amount": 1800,
+    "product_name": "Product 5",
+    "client_company": "Firma 5",
+    "customer_surname": "Sidorova"
+  },
+  {
+    "surname": "Sidorova",
+    "amount": 2200,
+    "product_name": "Product 6",
+    "client_company": "Firma 6",
+    "customer_surname": "Ivanova"
+  },
+  {
+    "surname": "Ivanovich",
+    "amount": 1300,
+    "product_name": "Product 7",
+    "client_company": "Firma 7",
+    "customer_surname": "Petrovich"
+  },
+  {
+    "surname": "Petrovich",
+    "amount": 1700,
+    "product_name": "Product 8",
+    "client_company": "Firma 8",
+    "customer_surname": "Sidorovich"
+  },
+  {
+    "surname": "Sidorovich",
+    "amount": 2300,
+    "product_name": "Product 9",
+    "client_company": "Firma 9",
+    "customer_surname": "Ivanovich"
+  },
+  {
+    "surname": "Ivanovsky",
+    "amount": 1400,
+    "product_name": "Product 10",
+    "client_company": "Firma 10",
+    "customer_surname": "Petrovsky"
+  },
+  {}
+]
