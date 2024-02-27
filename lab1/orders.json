@@ -1,12 +1,6 @@
 [
   {
-    "surname": "Sidorov",
-    "amount": 2000,
-    "product_name": "Product 3",
-    "client_company": "Firma 3",
-    "customer_surname": "Ivanov"
-  },
-  {
+    "id": 1,
     "surname": "Ivanova",
     "amount": 1200,
     "product_name": "Product 4",
@@ -14,6 +8,7 @@
     "customer_surname": "Petrova"
   },
   {
+    "id": 2,
     "surname": "Petrova",
     "amount": 1800,
     "product_name": "Product 5",
@@ -21,6 +16,7 @@
     "customer_surname": "Sidorova"
   },
   {
+    "id": 3,
     "surname": "Sidorova",
     "amount": 2200,
     "product_name": "Product 6",
@@ -28,6 +24,7 @@
     "customer_surname": "Ivanova"
   },
   {
+    "id": 4,
     "surname": "Ivanovich",
     "amount": 1300,
     "product_name": "Product 7",
@@ -35,6 +32,7 @@
     "customer_surname": "Petrovich"
   },
   {
+    "id": 5,
     "surname": "Petrovich",
     "amount": 1700,
     "product_name": "Product 8",
@@ -42,6 +40,7 @@
     "customer_surname": "Sidorovich"
   },
   {
+    "id": 6,
     "surname": "Sidorovich",
     "amount": 2300,
     "product_name": "Product 9",
@@ -49,11 +48,14 @@
     "customer_surname": "Ivanovich"
   },
   {
+    "id": 7,
     "surname": "Ivanovsky",
     "amount": 1400,
     "product_name": "Product 10",
     "client_company": "Firma 10",
     "customer_surname": "Petrovsky"
   },
-  {}
+  {
+    "id": "f2cb9daf-451b-4204-b246-e4e7e0734a06"
+  }
 ]

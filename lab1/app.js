@@ -7,17 +7,20 @@ const bodyParser = require('body-parser')
 app.use( bodyParser.json() );
 app.use(bodyParser.urlencoded({  extended: true }));
 
+const uuid = require('uuid');
+
 app.get('/', function (req, res) {
     fs.readFile( __dirname + "/" + "orders.json", 'utf8', function (err, data) {
-        var orders = JSON.parse( data );
+        let orders = JSON.parse( data );
         res.end( JSON.stringify(orders));
     });
 })
 
 app.get('/:id', function (req, res) {
     fs.readFile( __dirname + "/" + "orders.json", 'utf8', function (err, data) {
-        var orders = JSON.parse( data );
-        var order = orders[req.params.id]
+        let orders = JSON.parse( data );
+        let orderId = req.params.id;
+        let order = orders.find(order => order.id == orderId);
         res.end( JSON.stringify(order));
     });
 })
@@ -26,6 +29,7 @@ app.post('/', function (req, res) {
     fs.readFile( __dirname + "/" + "orders.json", 'utf8', function (err, data) {
         let orders = JSON.parse( data );
         const newOrder = {
+            "id": uuid.v4(),
             "surname": req.body.surname,
             "amount": req.body.amount,
             "product_name": req.body.product_name,
