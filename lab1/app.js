@@ -20,8 +20,13 @@ app.get('/:id', function (req, res) {
     fs.readFile( __dirname + "/" + "orders.json", 'utf8', function (err, data) {
         let orders = JSON.parse( data );
         let orderId = req.params.id;
-        let order = orders.find(order => order.id == orderId);
-        res.end( JSON.stringify(order));
+        let order = orders.find(order => order.id === orderId);
+        if (!order) {
+            res.status(404).send('Order not found.');
+        }
+        else {
+            res.end(JSON.stringify(order));
+        }
     });
 })
 
@@ -49,7 +54,9 @@ app.post('/', function (req, res) {
 app.put('/:id', (req,res)=>{
     fs.readFile( __dirname + "/orders.json", 'utf8', (err, data) => {
         let orders = JSON.parse( data );
-        orders[req.params.id - 1] = req.body;
+        let orderId = req.params.id;
+        let orderIndex = orders.findIndex(order => order.id === orderId);
+        orders[orderIndex] = req.body;
         fs.writeFile(__dirname+'/orders.json', JSON.stringify(orders,null,2),'utf8',(err)=>{
             if(err){
                 res.status(500).send('Problem while write in file')
@@ -62,7 +69,9 @@ app.put('/:id', (req,res)=>{
 app.delete('/:id', (req,res)=>{
     fs.readFile( __dirname + "/orders.json", 'utf8', (err, data) => {
         let orders = JSON.parse( data )
-        delete orders[req.params.id - 1]
+        let orderId = req.params.id;
+        let orderIndex = orders.findIndex(order => order.id === orderId);
+        delete orders[orderIndex];
         orders = orders.filter(Boolean)
         fs.writeFile(__dirname+'/orders.json', JSON.stringify(orders,null,2),'utf8',(err)=>{
             if(err){
