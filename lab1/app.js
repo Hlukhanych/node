@@ -20,7 +20,7 @@ app.get('/:id', function (req, res) {
     fs.readFile( __dirname + "/" + "orders.json", 'utf8', function (err, data) {
         let orders = JSON.parse( data );
         let orderId = req.params.id;
-        let order = orders.find(order => order.id === orderId);
+        let order = orders.find(order => order.id == orderId);
         if (!order) {
             res.status(404).send('Order not found.');
         }
@@ -55,8 +55,9 @@ app.put('/:id', (req,res)=>{
     fs.readFile( __dirname + "/orders.json", 'utf8', (err, data) => {
         let orders = JSON.parse( data );
         let orderId = req.params.id;
-        let orderIndex = orders.findIndex(order => order.id === orderId);
+        let orderIndex = orders.findIndex(order => order.id == orderId);
         orders[orderIndex] = req.body;
+        orders[orderIndex].id = uuid.v4();
         fs.writeFile(__dirname+'/orders.json', JSON.stringify(orders,null,2),'utf8',(err)=>{
             if(err){
                 res.status(500).send('Problem while write in file')
