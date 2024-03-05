@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 3030
 
 const fs = require("fs")
 const bodyParser = require('body-parser')
@@ -8,11 +8,12 @@ app.use( bodyParser.json() );
 app.use(bodyParser.urlencoded({  extended: true }));
 
 const uuid = require('uuid');
+const {json} = require("express");
 
 app.get('/', function (req, res) {
     fs.readFile( __dirname + "/" + "orders.json", 'utf8', function (err, data) {
         let orders = JSON.parse( data );
-        res.end( JSON.stringify(orders));
+        res.json(orders);
     });
 })
 
@@ -25,7 +26,7 @@ app.get('/:id', function (req, res) {
             res.status(404).send('Order not found.');
         }
         else {
-            res.end(JSON.stringify(order));
+            res.json(order);
         }
     });
 })
