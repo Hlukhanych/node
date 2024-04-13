@@ -6,7 +6,7 @@ const middleware = require('../middlewares/orders.middleware');
 
 router.route('/')
     .get(controller.getOrders)
-    .post(controller.createOrder)
+    .post(middleware.orderByAmountValidation, controller.createOrder)
 
 router.route('/:orderId')
     .get(middleware.orderByIdValidation, controller.getOrder)
