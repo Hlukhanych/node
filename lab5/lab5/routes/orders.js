@@ -1,16 +1,19 @@
 var express = require('express');
 var router = express.Router();
 
-const controller = require('../controllers/orders.controller');
-const middleware = require('../middlewares/orders.middleware');
+const controllers = require('../controllers/orders.controller');
+const middlewares = require('../middlewares/orders.middleware');
+const { authenticationCheck } = require('../middlewares/auth.middleware');
 
 router.route('/')
-    .get(controller.getOrders)
-    .post(middleware.orderCreationDataValidation, controller.createOrder)
+    .get(controllers.getOrders)
+    .post(middlewares.orderCreationDataValidation, controllers.createOrder)
+
+router.use(authenticationCheck);
 
 router.route('/:orderId')
-    .get(middleware.orderByIdValidation, controller.getOrder)
-    .patch(middleware.orderUpdateDataValidation, controller.updateOrder)
-    .delete(middleware.orderByIdValidation, controller.deleteOrder);
+    .get(middlewares.orderByIdValidation, controllers.getOrder)
+    .patch(middlewares.orderUpdateDataValidation, controllers.updateOrder)
+    .delete(middlewares.orderByIdValidation, controllers.deleteOrder);
 
 module.exports = router;

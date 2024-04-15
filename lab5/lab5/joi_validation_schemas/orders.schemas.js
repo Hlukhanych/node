@@ -20,7 +20,17 @@ const OrderCreateSchema = Joi.object({
 
     customer_surname: Joi.string()
         .min(3)
-        .max(30)
+        .max(30),
+
+    email: Joi.string()
+        .required()
+        .min(6)
+        .max(40),
+
+    password: Joi.string()
+        .required()
+        .min(6)
+        .max(10),
 })
 
 const OrderUpdateSchema = Joi.object({

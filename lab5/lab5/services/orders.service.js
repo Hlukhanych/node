@@ -1,7 +1,7 @@
 const orderModel = require('../models/order.model');
 
 async function create(order){
-    const { _id } = await userModel.create(user);
+    const { _id } = await orderModel.create(order);
     return _id;
 }
 

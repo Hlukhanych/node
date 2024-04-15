@@ -1,7 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
-const { port, mongodb_uri } = require('./config');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const { authenticationCheck } = require('./middlewares/auth.middleware');
@@ -9,6 +8,7 @@ const { authenticationCheck } = require('./middlewares/auth.middleware');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var ordersRouter = require('./routes/orders');
+const authRouter = require('./routes/auth.route');
 
 var app = express();
 
@@ -42,6 +42,8 @@ app.use(authenticationCheck);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/orders', ordersRouter);
+app.use('/auth', authRouter);
+
 
 app.use((req, res, next) => {
   next(createError.NotFound());

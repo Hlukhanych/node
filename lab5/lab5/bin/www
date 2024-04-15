@@ -15,7 +15,9 @@ var http = require('http');
 const mongoose = require('mongoose');
 var port = normalizePort(process.env.PORT || '3000');
 const mongodb_uri = 'mongodb://127.0.0.1:27017/lab2';
+// const jwtSecret = 'secret';
 app.set('port', port);
+// app.set('jwtSecret', jwtSecret)
 mongoose
     .connect(mongodb_uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then((res) => console.log('Connected'))

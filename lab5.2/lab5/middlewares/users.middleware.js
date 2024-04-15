@@ -33,13 +33,12 @@ const userCreationDataValidation = async (req, res, next) => {
 
         const user = await userService.findOne({
             $or: [
-                { phoneNumber: req.body.phoneNumber },
                 { email: req.body.email },
             ]
         });
 
         if (user) {
-            throw createError.BadRequest("User with such phone number or email already exist");
+            throw createError.BadRequest("User with such email already exist");
         }
 
         next();
@@ -56,12 +55,8 @@ const userUpdateDataValidation = async (req, res, next) => {
             throw createError.BadRequest(error.details[0].message);
         }
 
-        if (req.body.phoneNumber || req.body.email) {
+        if (req.body.email) {
             const orExpressions = [];
-
-            if (req.body.phoneNumber) {
-                orExpressions.push({ phoneNumber: req.body.phoneNumber });
-            }
 
             if (req.body.email) {
                 orExpressions.push({ email: req.body.email });
@@ -75,7 +70,7 @@ const userUpdateDataValidation = async (req, res, next) => {
             });
 
             if (user) {
-                throw createError.BadRequest("User with such phone number or email already exist");
+                throw createError.BadRequest("User with such email already exist");
             }
         }
 

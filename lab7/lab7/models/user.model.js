@@ -11,7 +11,10 @@ const userSchema = new Schema(
             type: String,
             required: true,
             unique: false,
-        }
+        },
+        lastLoginAt: {
+            type: Date,
+        },
     },
     {
         timestamps: true,

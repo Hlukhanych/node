@@ -15,10 +15,14 @@ var http = require('http');
 const mongoose = require('mongoose');
 var port = normalizePort(process.env.PORT || '3000');
 const mongodb_uri = 'mongodb://127.0.0.1:27017/lab2';
+const startScheduleJobs = require('../jobs');
 app.set('port', port);
 mongoose
     .connect(mongodb_uri, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then((res) => console.log('Connected'))
+    .then((res) => {
+      console.log('Connected')
+      startScheduleJobs()
+    })
     .catch((error) => console.log(error))
 
 /**

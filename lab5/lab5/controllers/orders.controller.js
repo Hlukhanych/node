@@ -1,16 +1,20 @@
 const orderService = require('../services/orders.service');
 const createError = require('http-errors');
 const uuid = require('uuid');
+const bcrypt = require('bcryptjs');
 
 async function createOrder(req, res, next) {
     try {
         const newOrderData = req.body;
         newOrderData.id = uuid.v4();
-        const newOrder = await orderService.create(newOrderData);
+        const _id = await orderService.create({
+            ...req.body,
+            password: await bcrypt.hash(req.body.password, await bcrypt.genSalt(10))
+        });
 
         res.status(200).json({
             status: 200,
-            data: newOrder,
+            data: { _id },
         });
     } catch (err) {
         next(createError.InternalServerError(err.message));
