@@ -1,0 +1,32 @@
+[
+  {
+    "surname": "Smith",
+    "faculty": "Engineering",
+    "course": 3,
+    "gender": "Male",
+    "scholarship": 1500,
+    "grade1": 85,
+    "grade2": 92,
+    "grade3": 88
+  },
+  {
+    "surname": "Johnson",
+    "faculty": "Science",
+    "course": 2,
+    "gender": "Female",
+    "scholarship": 1200,
+    "grade1": 95,
+    "grade2": 98,
+    "grade3": 97
+  },
+  {
+    "surname": "Williams",
+    "faculty": "Arts",
+    "course": 1,
+    "gender": "Male",
+    "scholarship": 1000,
+    "grade1": 88,
+    "grade2": 86,
+    "grade3": 90
+  }
+]
